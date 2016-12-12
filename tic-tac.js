@@ -1,6 +1,8 @@
 var array =[0,0,0,0,0,0,0,0,0]
 var player =0
 var playerTurn = 1
+var sequence=[]
+var gameNumber = 0
 
 function isGameOver(){
   var sum=0
@@ -18,7 +20,6 @@ function isGameOver(){
       else if(array[0]===2){
         player=2
       }
-      console.log("test");
       return true
     }
   }
@@ -30,7 +31,6 @@ function isGameOver(){
       else if(array[3]===2){
         player=2
       }
-      console.log("test");
       return true
     }
   }
@@ -43,7 +43,6 @@ function isGameOver(){
       else if(array[6]===2){
         player=2
       }
-      console.log("test");
       return true
     }
   }
@@ -56,7 +55,6 @@ function isGameOver(){
       else if(array[0]===2){
         player=2
       }
-      console.log("test");
       return true
     }
   }
@@ -69,7 +67,6 @@ function isGameOver(){
       else if(array[1]===2){
         player=2
       }
-      console.log("test");
       return true
     }
   }
@@ -82,7 +79,6 @@ function isGameOver(){
       else if(array[2]===2){
         player=2
       }
-      console.log("test");
       return true
     }
   }
@@ -95,7 +91,6 @@ function isGameOver(){
       else if(array[0]===2){
         player=2
       }
-      console.log("test");
       return true
     }
   }
@@ -108,7 +103,6 @@ function isGameOver(){
       else if(array[6]===2){
         player=2
       }
-      console.log("test");
       return true
     }
   }
@@ -141,10 +135,16 @@ function restart() {
   array = [0,0,0,0,0,0,0,0,0]
   playerTurn=1
   player=0
+  sequence=[]
+  gameNumber+=1
 }
 
 function playTurn(index) {
+
   if (array[index] === 0) {
+      sequence.push(index)
+      console.log("The player playing is "+ playerTurn + " and the tile clicked is " + index);
+      console.log("The game is in progress");
     array[index]=playerTurn
     if(playerTurn===1){
       playerTurn=2
@@ -159,4 +159,9 @@ function playTurn(index) {
   else{
     return false
   }
+}
+function printResults() {
+  console.log(whoWon() + ": this player won the game");
+  console.log("The sequence: " +sequence);
+  console.log("Game number is " + gameNumber);
 }
